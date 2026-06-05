@@ -3,6 +3,31 @@ import streamlit as st
 
 st.set_page_config(page_title="Message Generator")
 
+# Hide the Github links, header, and footer for privacy
+st.markdown(
+    """
+    <style>
+    /* hides the entire top decoration bar and running animation */
+    #stDecoration {display:none !important; visibility:hidden !important;}
+    
+    /* Hides the deploy button */
+    .stDeployButton {display:none !important; visibility:hidden !important;}
+    
+    /* hides the hamburger menu */
+    #MainMenu {display:none !important; visibility:hidden !important;}
+    header {display:none !important; visibility:hidden !important;}
+    
+    /* hides the 'Made with Streamlit' footer */
+    footer {display:none !important; visibility:hidden !important;}
+    
+    /* Closes massive empty gap at the top of the page caused by hiding the header */
+    .block-container {padding-top: 2rem !important;}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+
 #Initialize Hugging Face client
 
 client = InferenceClient(api_key=st.secrets["HF_TOKEN"])
