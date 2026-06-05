@@ -1,35 +1,41 @@
 from huggingface_hub import InferenceClient
-from streamlit.components.v1 import html
 import streamlit as st
 
 st.set_page_config(page_title="Message Generator")
 
 # Hide the Github links, header, and footer for privacy
-# JavaScript Injection to force-remove the parent Cloud hosting badge
-html('''
-<script>
-    // Wait for the parent document to fully load, then target and destroy the badges
-    const runBanishScript = () => {
-        const parentDoc = window.parent.document;
-        
-        // Target links that Streamlit Cloud wraps around the "Hosted with Streamlit" and GitHub profile badge
-        const cloudBadges = parentDoc.querySelectorAll('[href*="streamlit.io"], [class*="viewerBadge"], [data-testid="stViewerBadge"]');
-        
-        cloudBadges.forEach(element => {
-            // Traverse up to remove the container wrapping the badge
-            let container = element.closest('div') || element;
-            container.style.setProperty('display', 'none', 'important');
-            container.style.setProperty('visibility', 'hidden', 'important');
-            container.style.setProperty('height', '0px', 'important');
-            container.style.setProperty('opacity', '0', 'important');
-        });
-    };
-
-    // Run immediately and set an interval to catch late-loading cloud elements
-    runBanishScript();
-    setInterval(runBanishScript, 500);
-</script>
-''', height=0)
+st.markdown(
+    """
+    <style>
+    /* hide the default top decoration, menus, headers, and footers */
+    #stDecoration {display:none !important; visibility:hidden !important;}
+    .stDeployButton {display:none !important; visibility:hidden !important;}
+    #MainMenu {display:none !important; visibility:hidden !important;}
+    header {display:none !important; visibility:hidden !important;}
+    footer {display:none !important; visibility:hidden !important;}
+    
+    /* Remove profile badge */
+    div[data-testid="stStatusWidget"],
+    div[class*="viewerBadge"],
+    span[class*="viewerBadge"],
+    a[class*="viewerBadge"],
+    [class*="viewerBadge_container"],
+    .css-1jc7ptx, 
+    .e1ewe7hr3 {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0px !important;
+        width: 0px !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
+    
+    /* Close up the gap at the top of the page */
+    .block-container {padding-top: 2rem !important;}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 #Initialize Hugging Face client
 
