@@ -1,4 +1,3 @@
-Ini, TOML
 [theme]
 primaryColor = "#FF69B4" 
 backgroundColor = "#FFFFFF" 
@@ -10,7 +9,5 @@ toolbarMode = "hidden"
 
 [ui]
 hideTopBar = true
-
-
 
 
