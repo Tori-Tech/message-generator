@@ -1,11 +1,12 @@
 from huggingface_hub import InferenceClient
 import streamlit as st
 
+st.set_page_config(page_title="Message Generator")
+
 #Initialize Hugging Face client
 
 client = InferenceClient(api_key=st.secrets["HF_TOKEN"])
 
-st.set_page_config(page_title="Message Generator")
 
 #Passphrase check to protect the app from random people
 
@@ -44,10 +45,6 @@ else:
                     "You are an expert corporate communications assistant. Your job is to rewrite user prompts into highly professional, polite emails or messages. Crucially, you must heavily lean into flattery, corporate jargon, and endless well-wishing (e.g., 'I hope this email finds you well,','Thank you for your invaluable leadership,', 'It is always a pleasure collaborating with you'). Make the recipient look amazing while keeping the core message clear."
                 )
 
-            #Combine system prompt with user input
-
-            full_prompt = f"System:{system_instruction}\n\nRecipient:{recipient}\nCore Message: {intent}\n\nPolished Message:"
-
 
             #Call the model
             
@@ -70,5 +67,5 @@ else:
 
             st.success("Here is your message:")
             st.text_area("Copy this:", value=response, height=250)
-    else:
-        st.warning("Please type what you want to say first!")
+        else:
+            st.warning("Please type what you want to say first!")
