@@ -19,6 +19,16 @@ st.markdown(
     
     /* hides the 'Made with Streamlit' footer */
     footer {display:none !important; visibility:hidden !important;}
+
+    /* Hides the Github profile badge */
+    div[data-testid="stStatusWidget"],
+    .viewerBadge_container__1QSob,
+    [class^="viewerBadge_"], 
+    [id^="viewerBadge_"] {
+        display: none !important; 
+        visibility: hidden !important;
+    }
+    
     
     /* Closes massive empty gap at the top of the page caused by hiding the header */
     .block-container {padding-top: 2rem !important;}
