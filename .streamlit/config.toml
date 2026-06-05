@@ -1,3 +1,10 @@
+[client]
+toolbarMode = "hidden"
+
+[ui]
+hideTopBar = true
+
+
 [theme]
 primaryColor = "#ffffff"
 backgroundColor = "#ec009d7a"
@@ -5,8 +12,4 @@ secondaryBackgroundColor = "#7d365ff5"
 textColor = "#ffffff"
 font = "sans serif"
 
-[client]
-toolbarMode = "hidden"
 
-[ui]
-hideTopBar = true
