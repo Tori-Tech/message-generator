@@ -7,30 +7,30 @@ st.set_page_config(page_title="Message Generator")
 st.markdown(
     """
     <style>
-    /* hides the entire top decoration bar and running animation */
+    /* hide the default top decoration, menus, headers, and footers */
     #stDecoration {display:none !important; visibility:hidden !important;}
-    
-    /* Hides the deploy button */
     .stDeployButton {display:none !important; visibility:hidden !important;}
-    
-    /* hides the hamburger menu */
     #MainMenu {display:none !important; visibility:hidden !important;}
     header {display:none !important; visibility:hidden !important;}
-    
-    /* hides the 'Made with Streamlit' footer */
     footer {display:none !important; visibility:hidden !important;}
-
-    /* Hides the Github profile badge */
+    
+    /* Remove profile badge */
     div[data-testid="stStatusWidget"],
-    .viewerBadge_container__1QSob,
-    [class^="viewerBadge_"], 
-    [id^="viewerBadge_"] {
-        display: none !important; 
+    div[class*="viewerBadge"],
+    span[class*="viewerBadge"],
+    a[class*="viewerBadge"],
+    [class*="viewerBadge_container"],
+    .css-1jc7ptx, 
+    .e1ewe7hr3 {
+        display: none !important;
         visibility: hidden !important;
+        height: 0px !important;
+        width: 0px !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
     }
     
-    
-    /* Closes massive empty gap at the top of the page caused by hiding the header */
+    /* Close up the gap at the top of the page */
     .block-container {padding-top: 2rem !important;}
     </style>
     """,
