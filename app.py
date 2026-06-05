@@ -7,21 +7,22 @@ st.set_page_config(page_title="Message Generator")
 st.markdown(
     """
     <style>
-    /* hide the default top decoration, menus, headers, and footers */
+    /* Hide the default top decoration, menus, headers, and footers */
     #stDecoration {display:none !important; visibility:hidden !important;}
     .stDeployButton {display:none !important; visibility:hidden !important;}
     #MainMenu {display:none !important; visibility:hidden !important;}
     header {display:none !important; visibility:hidden !important;}
     footer {display:none !important; visibility:hidden !important;}
     
-    /* Remove profile badge */
-    div[data-testid="stStatusWidget"],
+    /* Aggressive blanket ban on the Viewer/Profile Badge and its container */
+    [data-testid="stViewerBadge"],
+    [data-testid="stStatusWidget"],
+    .stViewerBadge,
+    iframe[title="viewer-badge"],
     div[class*="viewerBadge"],
     span[class*="viewerBadge"],
     a[class*="viewerBadge"],
-    [class*="viewerBadge_container"],
-    .css-1jc7ptx, 
-    .e1ewe7hr3 {
+    [class*="viewerBadge_container"] {
         display: none !important;
         visibility: hidden !important;
         height: 0px !important;
@@ -36,7 +37,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
 
 #Initialize Hugging Face client
 
